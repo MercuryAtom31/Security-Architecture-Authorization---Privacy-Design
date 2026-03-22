@@ -1,0 +1,33 @@
+@startuml
+title Permissions Access Matrix
+
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide circle
+skinparam monochrome false
+skinparam backgroundColor #F8FAFC
+skinparam classBackgroundColor #E0F2FE
+skinparam classBorderColor #0EA5E9
+skinparam classFontColor #0F172A
+skinparam classHeaderBackgroundColor #BAE6FD
+skinparam noteBackgroundColor #FEF3C7
+skinparam noteBorderColor #F59E0B
+skinparam noteFontColor #78350F
+
+class "Access Matrix" as AccessMatrix {
+  |= Role |= Payroll |= Financial Reports |= Employee Records |= Audit Logs |
+  | Employee | No Access | No Access | Own Only | No Access |
+  | HR | Read / Update | No Access | Manage | No Access |
+  | Finance Analyst | No Access | Read | No Access | No Access |
+  | Manager | No Access | Read-Only | Limited | No Access |
+  | Admin | Full Access | Full Access | Full Access | Full Access |
+}
+
+note bottom of AccessMatrix
+Least privilege is enforced by granting each role
+only the permissions required for its responsibilities.
+Separation of duties is supported by dividing access
+between HR, Finance, Management, and Administration.
+end note
+
+@enduml
