@@ -1,5 +1,5 @@
 @startuml
-title Permissions Access Matrix
+title Access Matrix (RBAC Baseline)
 
 skinparam shadowing false
 skinparam classAttributeIconSize 0
@@ -15,19 +15,20 @@ skinparam noteBorderColor #F59E0B
 skinparam noteFontColor #78350F
 
 class "Access Matrix" as AccessMatrix {
-  |= Role |= Payroll |= Financial Reports |= Employee Records |= Audit Logs |
-  | Employee | No Access | No Access | Own Only | No Access |
-  | HR | Read / Update | No Access | Manage | No Access |
-  | Finance Analyst | No Access | Read | No Access | No Access |
-  | Manager | No Access | Read-Only | Limited | No Access |
-  | Admin | Full Access | Full Access | Full Access | Full Access |
+  |= Role |= Payroll Data |= Financial Reports |= Employee PII |= Audit Logs |= IAM Config |
+  | Employee | No access | No access | Own record (read) | No access | No access |
+  | HR | Read/Update limited fields | No access | Read/Update | No access | No access |
+  | Finance Analyst | No access | Read | No access | No access | No access |
+  | Finance Manager | Read (aggregated only) | Read/Approve | No access | Read (team scope) | No access |
+  | Payroll Specialist | Read/Update payroll | No access | Read minimum fields | No access | No access |
+  | Auditor | No access | Read (historical) | Masked read | Read | No access |
+  | Admin | No business-data read by default | No business-data read by default | No business-data read by default | Read | Admin only |
 }
 
 note bottom of AccessMatrix
-Least privilege is enforced by granting each role
-only the permissions required for its responsibilities.
-Separation of duties is supported by dividing access
-between HR, Finance, Management, and Administration.
+Least privilege: default-deny and task-specific permissions only.
+Separation of duties: payroll entry/approval and report creation/approval
+are split across different roles to reduce fraud and insider risk.
 end note
 
 @enduml
