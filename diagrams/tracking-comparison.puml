@@ -1,0 +1,21 @@
+@startuml
+title Tracking Comparison and Identity Correlation
+
+skinparam shadowing false
+hide circle
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam backgroundColor #F8FAFC
+skinparam classBackgroundColor #E0F2FE
+skinparam classBorderColor #0EA5E9
+skinparam classFontColor #0F172A
+skinparam classHeaderBackgroundColor #BAE6FD
+
+class "Tracking Comparison and Identity Correlation" as TrackingMatrix {
+  |= Method |= What it collects |= Persistence |= Correlation strength |= Main risk |
+  | Cookies | Session IDs\nUser preferences\nAd IDs | Medium/High\n(Until expiry/clear) | High when shared\nacross sites | Cross-site\nprofiling |
+  | Browser fingerprinting | Browser/OS/fonts\nScreen/plugins/timezone\nCanvas traits | High\n(Hard to reset fully) | Very high when features\nare combined and unique | Silent persistent\nre-identification |
+  | IP tracking | Source IP\nASN/geolocation\nNetwork metadata | Medium\n(Dynamic but linkable) | Medium alone\nHigh with other signals | Location/network-based\nlinkage |
+}
+
+@enduml
