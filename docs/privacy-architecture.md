@@ -47,6 +47,11 @@ Correlation becomes highly effective when trackers combine multiple signals:
 
 Even if one signal changes, remaining signals can reconnect user activity.
 
+## Diagrams
+
+- [Tracking comparison diagram](../diagrams/tracking-comparison.puml)
+- [Identity correlation diagram](../diagrams/identity-correlation.puml)
+
 ## Privacy-Friendly Architecture
 
 ### 1) Anonymization Layer
@@ -98,3 +103,7 @@ This architecture is practical because it uses widely deployable controls:
 - Automated retention and deletion workflows
 
 It significantly reduces tracking risk, but complete anonymity cannot be guaranteed against advanced cross-context tracking.
+
+## Conclusion
+
+The privacy-friendly architecture reduces tracking and identity correlation by combining anonymization, tokenization, minimal data collection, and compliance controls. It is practical for a global company because it balances user privacy, operational needs, and regulatory requirements.
